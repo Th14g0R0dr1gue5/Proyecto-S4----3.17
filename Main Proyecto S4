@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        PerfilMedico perfilMedico1 = new PerfilMedico("Paul","Walker","Masculino",12,9,1973,188,78);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Primer Nombre : ");
+        perfilMedico1.setPrimerNombre(sc.nextLine());
+        System.out.println("Apellido : ");
+        perfilMedico1.setApellido(sc.nextLine());
+        System.out.println("Sexo : ");
+        perfilMedico1.setSexo(sc.nextLine());
+        System.out.println("Dia de Nacimiento : ");
+        perfilMedico1.setDiaNacimiento(Integer.parseInt(sc.nextLine()));
+        System.out.println("Mes de Nacimiento : ");
+        perfilMedico1.setMesNacimiento(Integer.parseInt(sc.nextLine()));
+        System.out.println("Año de Nacimiento : ");
+        perfilMedico1.setAñoNacimiento(Integer.parseInt(sc.nextLine()));
+        System.out.println("Altura : ");
+        perfilMedico1.setAltura(Integer.parseInt(sc.nextLine()));
+        System.out.println("Peso : ");
+        perfilMedico1.setPeso(Integer.parseInt(sc.nextLine()));
+    }
+}
