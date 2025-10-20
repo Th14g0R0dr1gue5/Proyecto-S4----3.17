@@ -1,0 +1,85 @@
+public class FrecuenciasCardiacas {
+    private String nombre;
+    private String apellido;
+    private int dia;
+    private int mes;
+    private int año;
+
+    /** setter y getter */
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+
+
+
+    /** Metodos */
+
+    public void DespliegueDatos(){
+        System.out.printf("******Datos del paciente****** : \n"+ "Nombre : " + this.nombre+ "\n" + "Apellido : "+ this.apellido+"\n" + "Dia :" +this.dia +"\n" + "Mes: "+ this.mes +"\n" + "Año : "+ this.año+"\n") ;
+
+    }
+    public void  Datospaciente(){
+        /** Recepcion de Fecha */
+        float años;
+        años = 2025 - año ;
+        System.out.printf("La edad es :"+ años);
+        System.out.printf("\n");
+
+/** Calculo Frecuencia Cardiaca Maxima  */
+        float frcard;
+        frcard = 220 - años;
+        System.out.printf("La frecuencia Cardiaca maxima es :"+ frcard);
+        System.out.printf("\n");
+/** Frecuencia cardiaca esperada */
+        float rango1;
+        float rango2;
+        float rango;
+
+        rango1 = (float) (frcard * 0.5);
+        rango2 = (float) (frcard * 0.85);
+        rango = (rango2 - rango1);
+        System.out.printf("La frecuencia cardiaca esperada es de : "+ rango, "%");
+
+
+
+    }
+
+
+}
