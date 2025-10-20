@@ -1,44 +1,61 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        PerfilMedico perfilMedico1 = new PerfilMedico("Paul","Walker","Masculino",12,9,1973,188,78);
-        Scanner sc = new Scanner(System.in);
+        // Crear perfil con valores iniciales (serán sobreescritos)
+        PerfilMedico perfilMedico1 = new PerfilMedico("Paul", "Walker", "Masculino", 12, 9, 1973, 188, 78);
 
-        System.out.println("Primer Nombre : ");
-        perfilMedico1.setPrimerNombre(sc.nextLine());
-        System.out.println("Apellido : ");
-        perfilMedico1.setApellido(sc.nextLine());
-        System.out.println("Sexo : ");
-        perfilMedico1.setSexo(sc.nextLine());
-        System.out.println("Dia de Nacimiento : ");
-        perfilMedico1.setDiaNacimiento(Integer.parseInt(sc.nextLine()));
-        System.out.println("Mes de Nacimiento : ");
-        perfilMedico1.setMesNacimiento(Integer.parseInt(sc.nextLine()));
-        System.out.println("Año de Nacimiento : ");
-        perfilMedico1.setAñoNacimiento(Integer.parseInt(sc.nextLine()));
-        System.out.println("Altura : ");
-        perfilMedico1.setAltura(Integer.parseInt(sc.nextLine()));
-        System.out.println("Peso : ");
-        perfilMedico1.setPeso(Integer.parseInt(sc.nextLine()));
+        perfilMedico1.setPrimerNombre(JOptionPane.showInputDialog("Primer Nombre:"));
+        perfilMedico1.setApellido(JOptionPane.showInputDialog("Apellido:"));
+        perfilMedico1.setSexo(JOptionPane.showInputDialog("Sexo:"));
+        perfilMedico1.setDiaNacimiento(Integer.parseInt(JOptionPane.showInputDialog("Día de nacimiento:")));
+        perfilMedico1.setMesNacimiento(Integer.parseInt(JOptionPane.showInputDialog("Mes de nacimiento:")));
+        perfilMedico1.setAñoNacimiento(Integer.parseInt(JOptionPane.showInputDialog("Año de nacimiento:")));
+        perfilMedico1.setAltura(Double.parseDouble(JOptionPane.showInputDialog("Altura (cm):")));
+        perfilMedico1.setPeso(Double.parseDouble(JOptionPane.showInputDialog("Peso (kg):")));
 
-        // Calcular y mostrar la edad*/
         int edad = perfilMedico1.CalcularEdad();
-        System.out.println("Edad: " + edad + " años");
-
-        // Calcular y mostrar el BMI*/
         double bmi = perfilMedico1.calcularBMI();
-        System.out.println("Índice de Masa Corporal (BMI): " + String.format("%.2f", bmi));
-        System.out.println("Clasificación del BMI: " + perfilMedico1.clasificarBMI());
-
-        // Calcular y mostrar la Frecuencia Cardiaca Máxima*/
+        String clasificacionBMI = perfilMedico1.clasificarBMI();
         int fcm = perfilMedico1.calcularFCM();
-        System.out.println("Frecuencia Cardiaca Máxima: " + fcm + " bpm");
-
-        // Calcular y mostrar el rango de Frecuencia Cardiaca Esperada*/
         String rangoFC = perfilMedico1.calcularRangoFC();
-        System.out.println("Rango esperado de Frecuencia Cardiaca: " + rangoFC);
+
+        // Armar el resultado en una sola ventana
+        String resultado = String.format("""
+                --- Información del Paciente ---
+                Nombre: %s %s
+                Sexo: %s
+                Fecha de nacimiento: %02d/%02d/%d
+                Altura: %.2f cm
+                Peso: %.2f kg
+                --- Resultados ---
+                Edad: %d años
+                Índice de Masa Corporal (BMI): %.2f
+                Clasificación del BMI: %s
+                Frecuencia Cardiaca Máxima: %d bpm
+                Rango esperado de Frecuencia Cardiaca: %s
+ 
+                --- Tabla de valores del BMI ---
+                Bajo peso: menos de 18.5
+                Normal: entre 18.5 y 24.9
+                Sobrepeso: entre 25 y 29.9
+                Obeso: 30 o más
+                """,
+                perfilMedico1.getPrimerNombre(),
+                perfilMedico1.getApellido(),
+                perfilMedico1.getSexo(),
+                perfilMedico1.getDiaNacimiento(),
+                perfilMedico1.getMesNacimiento(),
+                perfilMedico1.getAñoNacimiento(),
+                perfilMedico1.getAltura(),
+                perfilMedico1.getPeso(),
+                edad,
+                bmi,
+                clasificacionBMI,
+                fcm,
+                rangoFC
+        );
+
+        JOptionPane.showMessageDialog(null, resultado);
     }
 }
