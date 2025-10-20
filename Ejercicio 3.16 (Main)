@@ -1,0 +1,39 @@
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        /** Instanciar */
+
+        FrecuenciasCardiacas paciente1 = new FrecuenciasCardiacas();
+        BufferedReader br= new BufferedReader( new InputStreamReader(System.in));
+
+        /** Metodo de Lectura */
+        System.out.printf("Ingrese Nombre : ");
+        paciente1.setNombre(br.readLine());
+        System.out.printf("\n");
+        System.out.printf("Ingrese Apellido : ");
+        paciente1.setApellido(br.readLine());
+        System.out.printf("\n");
+        System.out.printf("*** Ingrese Fecha de nacimiento ***\n");
+        System.out.printf("*** Ingrese Dia : ");
+        paciente1.setDia(Integer.parseInt(br.readLine()));
+        System.out.printf("*** Ingrese Mes : ");
+        paciente1.setMes(Integer.parseInt(br.readLine()));
+        System.out.printf("*** Ingrese Año : ");
+        paciente1.setAño(Integer.parseInt(br.readLine()));
+        System.out.printf("\n");
+
+
+        /** Despliegue de Datos */
+        paciente1.DespliegueDatos();
+
+        /** Llamado de funciones */
+
+        paciente1.Datospaciente();
+
+    }
+}
